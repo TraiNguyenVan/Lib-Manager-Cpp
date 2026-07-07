@@ -1,4 +1,5 @@
 #include <string>
+#include <string_view>
 #include <unordered_map>
 #include <vector>
 #include <fstream>
@@ -28,7 +29,7 @@ enum class InsertionStatus
 class Library
 {
 public:
-    Library(int id, string name, string filepath)
+    Library(int id, string name)
     {
         this->name = name;
         this->id = id;
@@ -50,27 +51,27 @@ public:
         for (int i = 0; i < n; i++)
         {
             string ISBN, title, author;
-            int avaliable_copies;
+            int available_copies;
             getline(fi, ISBN);
             getline(fi, title);
             getline(fi, author);
-            fi >> avaliable_copies;
+            fi >> available_copies;
             fi.ignore();
-            addBook(makeBookfromRecord(ISBN, title, author, avaliable_copies));
+            addBook(makeBookfromRecord(ISBN, title, author, available_copies));
         }
 
         return true;
     };
 
-    Book makeBookfromRecord(string ISBN, string title, string author, int avaliable_copies) {
-        return Book(ISBN, title, author, avaliable_copies);
+    Book makeBookfromRecord(string ISBN, string title, string author, int available_copies)
+    {
+        return Book(ISBN, title, author, available_copies);
     }
 
     string makeRecord(Book &book)
     {
-        return book.getISBN() + "\n" + book.getTitle() + "\n" + book.getAuthor() + "\n" + to_string(book.getAvaliableCopies());
+        return book.getISBN() + "\n" + book.getTitle() + "\n" + book.getAuthor() + "\n" + to_string(book.getAvailableCopies());
     }
-
 
     bool saveToFile(const std::string &filepath)
     {

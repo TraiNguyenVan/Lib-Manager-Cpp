@@ -10,7 +10,7 @@ public:
         this->title = title;
         this->ISBN = ISBN;
         this->author = author;
-        this->avaliable_copies = total_copies;
+        this->available_copies = total_copies;
     }
     string getISBN() const {
         return this->ISBN;
@@ -21,13 +21,13 @@ public:
     string getAuthor() const {
         return this->author;
     }
-    int getAvaliableCopies() const {
-        return this->avaliable_copies;
+    int getAvailableCopies() const {
+        return this->available_copies;
     }
 
 private:
     string ISBN;
     string title;
     string author;
-    int avaliable_copies;
+    int available_copies;
 };

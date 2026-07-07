@@ -6,8 +6,8 @@ using namespace std;
 int main()
 {
 
-    const string filepath = "data.txt";
-    Library Lib1(1, "Library", filepath);
+    const string database = "database.txt";
+    Library Lib1(1, "Library");
     // Book book1("12345432345", "Game of Thrones", "Steve Jobs", 100);
     // InsertionStatus status = Lib1.addBook(book1);
     // switch (status)
@@ -19,8 +19,8 @@ int main()
     //     cout << "Unknow error\n";
     //     break;
     // }
-    Lib1.loadFromFile(filepath);
-    Lib1.saveToFile(filepath);
+    Lib1.loadFromFile(database);
+    Lib1.saveToFile(database);
 
     return 0;
 }

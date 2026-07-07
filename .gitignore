@@ -2,7 +2,7 @@
 main
 
 # Data files
-data.txt
+database.txt
 
 # IDE
 .vscode/

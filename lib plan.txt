@@ -1,0 +1,23 @@
+Library 
+- name
+- id 
+- books (category)
+- students 
+- borrow ssystem
++ borrow
++ return
++ ticket
+
+
+
+
+Student
+- id
+- name
+
+
+
+cli system
+
+
+
