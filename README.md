@@ -1,1 +1,2 @@
 - Hello this no vibe code this thing yea?
+- Well this thing still super new and definitely not well organize yet, so we are accepting anychanges to improve this project
