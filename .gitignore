@@ -1,0 +1,8 @@
+# Compiled binary
+main
+
+# Data files
+data.txt
+
+# IDE
+.vscode/
