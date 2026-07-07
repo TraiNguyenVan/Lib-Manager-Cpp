@@ -7,6 +7,9 @@ Library
 + borrow
 + return
 + ticket
++ borrow day
++ return day
++ fine due to delay (We actually have to pay if don't return the book before the term end)
 
 
 
@@ -14,7 +17,8 @@ Library
 Student
 - id
 - name
-
+- class
+- A sorting system sort student by class
 
 
 cli system
