@@ -1,7 +1,7 @@
 #include "library.hpp"
 
 // provide default value to assure safety
-Library::Library(int id , string name)
+Library::Library(int id, string name)
 {
     this->name = name;
     this->id = id;
@@ -10,17 +10,20 @@ Library::Library(int id , string name)
 bool Library::loadFromFile(const std::string &filepath)
 {
     ifstream fi(filepath);
+    if (!fi.is_open())
+        return false;
+
     int n;
-    fi >> n;
+    if (!(fi >> n))
+        return false;
     fi.ignore();
+
     for (int i = 0; i < n; i++)
     {
         string ISBN, title, author;
         int available_copies;
-        getline(fi, ISBN);
-        getline(fi, title);
-        getline(fi, author);
-        fi >> available_copies;
+        if (!getline(fi, ISBN) || !getline(fi, title) || !getline(fi, author) || !(fi >> available_copies))
+            return false;
         fi.ignore();
         addBook(makeBookfromRecord(ISBN, title, author, available_copies));
     }
