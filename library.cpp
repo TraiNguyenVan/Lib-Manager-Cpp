@@ -7,6 +7,12 @@ lib::Library(int id, string name)
     this->id = id;
 }
 
+InsertionStatus lib::addBook(const Book &book)
+    {
+        this->Books.insert_or_assign(book.getISBN(), book);
+        return InsertionStatus::Success;
+    }
+
 bool lib::loadFromFile(const std::string &filepath){
     ifstream fi(filepath);
     int n;
