@@ -4,10 +4,11 @@
 - Defenitely remember to make it a new commit or branch
 
 
-How to build and run(fresh):
-- ```rm -rf build .deps-cache && mkdir build && cmake -S . -B build && cmake --build build && ./build/lib_manager``` 
+How to build and run:
 
-if you already built once and dont want to download the dependencies again (like 100MB):
-- ```rm -rf build && mkdir build && cmake -S . -B build && cmake --build build  && ./build/lib_manager```
-
-Or you can also run the command seperately to get a cleaner output
+```sh
+make run       # build (incremental) + run
+make build     # build only
+make fresh     # full clean rebuild (redownloads deps)
+make clean     # just remove build/
+```
