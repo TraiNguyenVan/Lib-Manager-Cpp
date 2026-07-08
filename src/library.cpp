@@ -35,19 +35,29 @@ Book Library::makeBookfromRecord(string ISBN, string title, string author, int a
     return Book(ISBN, title, author, available_copies);
 }
 
+// this one makes one record means one book
 string Library::makeRecord(Book &book)
 {
     return book.getISBN() + "\n" + book.getTitle() + "\n" + book.getAuthor() + "\n" + to_string(book.getAvailableCopies());
 }
 
-bool Library::saveToFile(const std::string &filepath)
-{
-    ofstream fo(filepath);
-    fo << Books.size() << "\n";
+
+// this one simply makes mulitple records at once as a vector
+vector<string> Library::makeRecords() {
+    vector<string> records;
     for (auto it : Books)
     {
         Book book = it.second;
-        fo << makeRecord(book) << "\n";
+        records.push_back(makeRecord(book));
     }
-    return true;
+}
+
+bool Library::saveToFile(const std::string &filepath)
+{
+    ofstream fo(filepath);
+    vector<string> records = makeRecords();
+    for (int i = 0; i < records.size(); ++i) {
+        
+    }
+        return true;
 }
