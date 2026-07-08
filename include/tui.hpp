@@ -34,8 +34,10 @@ private:
     bool quit_requested = false;
     Component input = Input(&input_value, "");
     Component renderer;
-    
+
     Component app;
+    // vertical scroll position for log pane (0..1). yea this is hard, idont understand this honestly
+    float scroll_y = 0.f;
     // honestly i dont really know where to put the actually lib object
     // while keeping it accessible from TUI object and anything other objects in the main function
     // if you come up with any idea that help the library object more universal, let me know
