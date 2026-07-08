@@ -3,9 +3,9 @@
 #include <string>
 #include <deque>
 
-// #include "ftxui/component/component.hpp"
-// #include "ftxui/component/screen_interactive.hpp"
-// #include "ftxui/dom/elements.hpp"
+#include "ftxui/component/component.hpp"
+#include "ftxui/component/screen_interactive.hpp"
+#include "ftxui/dom/elements.hpp"
 
 using namespace std;
 
