@@ -7,6 +7,7 @@
 #include "ftxui/component/screen_interactive.hpp"
 #include "ftxui/dom/elements.hpp"
 
+
 using namespace std;
 
 int main()
@@ -16,8 +17,7 @@ int main()
     Library Lib1(1, "Library");
 
 
-
-
+    
     Lib1.loadFromFile(database);
     Lib1.saveToFile(database);
 

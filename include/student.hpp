@@ -8,12 +8,7 @@ using namespace std;
 class Student
 {
 public:
-    Student(int id, string name, string phone)
-    {
-        this->name = name;
-        this->id = id;
-        this->phone = phone;
-    }
+    Student(int id, string name, string phone);
 
 private:
     int id;
