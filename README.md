@@ -19,6 +19,9 @@ make fresh     # full clean rebuild (redownloads deps)
 make clean     # just remove build/
 ```
 
+## Current stats
+- be able to read and write basic library data from .txt file
+
 ## Project structure 
 ```
 Lib-Manager-Cpp/

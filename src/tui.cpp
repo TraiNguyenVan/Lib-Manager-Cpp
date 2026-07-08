@@ -37,6 +37,7 @@ string TUI::HandleCommand(const string &command)
     }
     if (command == "/clear")
         return "__CLEAR__";
+    // gonna make this expandable soon
     if (command == "/help")
         return "Available commands: /help, /load, /save /clear, /quit";
     return "You typed: " + command;
