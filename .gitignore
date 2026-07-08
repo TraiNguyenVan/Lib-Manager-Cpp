@@ -1,8 +1,14 @@
 # Compiled binary
 main
+lib_manager           
 
 # Data files
 database.txt
 
 # IDE
 .vscode/
+
+# Cmake trashes
+build/                
+.deps-cache/   
+compile_commands.json 

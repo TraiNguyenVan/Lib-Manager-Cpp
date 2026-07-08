@@ -2,3 +2,8 @@
 - Well this thing still super new and definitely not well organized yet, so we are accepting any changes to improve this project
 - Fix, replace anything that you think it will make this code better!
 - Defenitely remember to make it a new commit or branch
+
+
+How to build and run:
+  `cmake -B build && cmake --build build && ./build/lib_manager` 
+Or you can also run the command seperately to get a cleaner output
