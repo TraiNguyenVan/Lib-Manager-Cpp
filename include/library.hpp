@@ -43,6 +43,7 @@ public:
     bool loadFromFile(const std::string &filepath);
     Book makeBookfromRecord(string ISBN, string title, string author, int available_copies);
     string makeRecord(Book &book);
+    vector<string> makeRecords();
     bool saveToFile(const std::string &filepath);
 
 private:

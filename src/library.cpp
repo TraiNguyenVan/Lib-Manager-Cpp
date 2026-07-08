@@ -50,6 +50,7 @@ vector<string> Library::makeRecords() {
         Book book = it.second;
         records.push_back(makeRecord(book));
     }
+    return records;
 }
 
 bool Library::saveToFile(const std::string &filepath)
@@ -57,7 +58,7 @@ bool Library::saveToFile(const std::string &filepath)
     ofstream fo(filepath);
     vector<string> records = makeRecords();
     for (int i = 0; i < records.size(); ++i) {
-        
+        fo << records[i] << "\n";
     }
         return true;
 }
