@@ -6,6 +6,7 @@
 #include <deque>
 
 #include "library.hpp"
+#include "api.hpp"
 
 #include "ftxui/component/component.hpp"
 #include "ftxui/component/screen_interactive.hpp"
@@ -18,7 +19,7 @@ class TUI
 {
 public:
     // constructor
-    TUI(Library &Lib);
+    TUI(Library &Lib, Api &api);
 
 private:
     // yes this is what happen when we do a command
@@ -40,6 +41,7 @@ private:
     // if you come up with any idea that help the library object more universal, let me know
     string database;
     Library Lib;
+    Api api;
 };
 
 #endif

@@ -4,8 +4,11 @@
 
 #include <sstream>
 
-TUI::TUI(Library &Lib) : Lib(Lib)
+TUI::TUI(Library &Lib, Api &api) : Lib(Lib), api(api)
 {
+
+    Api api1(Lib);
+
     input = CatchEvent(input, [&](Event event)
                        { return handle_input_event(event, input_value, log, quit_requested); });
     renderer = Renderer(input, [&]
@@ -23,23 +26,14 @@ string TUI::HandleCommand(const string &command)
         return "";
 
     // load library from database.txt
-    if (command.rfind("/load ", 0) == 0) // Space in the search string
+    if (command.rfind("/load ", 0) == 0) // /load <file>
     {
-        istringstream iss(command);
-        string cmd, filename;
-        iss >> cmd >> filename;
-        if (filename.empty())
-            return "Usage: /load <filename>";
-        return Lib.loadFromFile(filename) ? "Loaded from: " + filename : "Failed to load from: " + filename;
+        return api.load(command);
     }
-    if (command.rfind("/save ", 0) == 0) // Space in the search string
+    // save library to file
+    if (command.rfind("/save ", 0) == 0) // /save <file>
     {
-        istringstream iss(command);
-        string cmd, filename;
-        iss >> cmd >> filename;
-        if (filename.empty())
-            return "Usage: /save <filename>";
-        return Lib.saveToFile(filename) ? "Saved to: " + filename : "Failed to save to: " + filename;
+        return api.save(command);
     }
     if (command == "/clear")
         return "__CLEAR__";

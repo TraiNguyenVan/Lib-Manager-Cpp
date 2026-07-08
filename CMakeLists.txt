@@ -15,7 +15,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(ftxui)
 
-add_executable(lib_manager src/main.cpp src/book.cpp src/library.cpp src/student.cpp src/transaction.cpp src/tui.cpp)
+add_executable(lib_manager src/main.cpp src/api.cpp src/book.cpp src/library.cpp src/student.cpp src/transaction.cpp src/tui.cpp)
 target_include_directories(lib_manager PRIVATE include)
 
 target_link_libraries(lib_manager
