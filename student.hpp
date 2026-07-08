@@ -1,3 +1,6 @@
+#ifndef STUDENT_HPP
+#define STUDENT_HPP
+
 #include <string>
 
 using namespace std;
@@ -17,3 +20,5 @@ private:
     string name;
     string phone;
 };
+
+#endif
