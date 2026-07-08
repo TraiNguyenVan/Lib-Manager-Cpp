@@ -1,10 +1,12 @@
 #include "library.hpp"
 
-Library::Library(int id, string name)
+// provide default value to assure safety
+Library::Library(int id , string name)
 {
     this->name = name;
     this->id = id;
 }
+
 bool Library::loadFromFile(const std::string &filepath)
 {
     ifstream fi(filepath);

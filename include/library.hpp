@@ -31,7 +31,7 @@ enum class InsertionStatus
 class Library
 {
 public:
-    Library(int id, string name);
+    Library(int id = 1, string name = "Lib");
     InsertionStatus addBook(const Book &book)
     {
         this->Books.insert_or_assign(book.getISBN(), book);

@@ -5,9 +5,9 @@
 
 
 How to build and run(fresh):
-- ```rm -rf build .deps-cache && mkdir build && cmake -S . -B build && cmake --build build``` 
+- ```rm -rf build .deps-cache && mkdir build && cmake -S . -B build && cmake --build build && ./build/lib_manager``` 
 
 if you already built once and dont want to download the dependencies again (like 100MB):
-- ```rm -rf build && mkdir build && cmake -S . -B build && cmake --build build```
+- ```rm -rf build && mkdir build && cmake -S . -B build && cmake --build build  && ./build/lib_manager```
 
 Or you can also run the command seperately to get a cleaner output

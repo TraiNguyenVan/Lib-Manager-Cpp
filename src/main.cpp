@@ -1,5 +1,6 @@
 #include <iostream>
 #include "library.hpp"
+#include "tui.hpp"
 #include <string>
 #include <deque>
 
@@ -7,19 +8,18 @@
 #include "ftxui/component/screen_interactive.hpp"
 #include "ftxui/dom/elements.hpp"
 
-
 using namespace std;
 
 int main()
 {
 
-    const string database = "database.txt";
-    Library Lib1(1, "Library");
+    // const string database = "database.txt";
+    Library Lib1{1, "Library"};
 
+    TUI tui1(Lib1);
 
-    
-    Lib1.loadFromFile(database);
-    Lib1.saveToFile(database);
+    // Lib1.loadFromFile(database);
+    // Lib1.saveToFile(database);
 
     return 0;
 }
