@@ -9,12 +9,17 @@
 
 using namespace std;
 
+inline vector<string> commands = {
+    "help", "load [filename]", "save [filename]", "list [option]", "clear", "quit"};
+
 class Api
 {
 public:
     Api(Library &Lib);
     string load(const string &command);
     string save(const string &command);
+    string list(const string &command);
+    string help(const string &command);
 
 private:
     Library Lib;
