@@ -63,7 +63,7 @@ auto TUI::handle_input_event(Event event, string &input_value, deque<string> &lo
     }
     // at this point we just print the unknow command out
     log.push_back(">" + input_value);
-    if (input_value == "/quit")
+    if (input_value == "/quit" || input_value == "/exit")
     {
         quit_requested = true;
     }
