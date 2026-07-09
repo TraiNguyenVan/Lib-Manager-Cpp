@@ -1,6 +1,6 @@
 #include "student.hpp"
 
-Student::Student(int id, string name, string phone)
+Student::Student(string id, string name, string phone)
 {
     this->name = name;
     this->id = id;
