@@ -1,0 +1,3 @@
+This is a note for CapCap about what feature using what function
+#define book.hpp b
+#define library.hpp l

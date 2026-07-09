@@ -7,13 +7,16 @@ using namespace std;
 
 class Student
 {
-public:
-    Student(int id, string name, string phone);
-
 private:
-    int id;
+    string id;
     string name;
     string phone;
+    
+
+public:
+    Student(string id, string name, string phone);
+
+
 };
 
 #endif
