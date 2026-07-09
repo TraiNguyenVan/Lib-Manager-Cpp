@@ -3,7 +3,14 @@
 - Well this thing still super new and definitely not well organized yet, so we are accepting any changes to improve this project
 - Fix, replace anything that you think it will make this code better!
 - Defenitely remember to make it a new commit or branch
+- please dont `git push --force`, only do it if you know exactly what is happening like you want to reset the remote head back to a few commits.
 
+## Features
+- List avaliable commands by using `/help`
+- Be able to load and save basic library data from a .txt file through command `/load <filename>` and `/save <filename>` 
+- Can list avaliable data with `/list <datatype>` with `<datatype>` are .eg `books`, (more will comming soon)...
+- Clear screen using `/clear` and quit the program with `/quit`
+    
 ## How to use
 **Pre-built binary:**
 ```sh
@@ -18,9 +25,6 @@ make build     # build only
 make fresh     # full clean rebuild (redownloads deps)
 make clean     # just remove build/
 ```
-
-## Current stats
-- be able to read and write basic library data from .txt file
 
 ## Project structure 
 ```
