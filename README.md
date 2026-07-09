@@ -6,10 +6,6 @@
 - please dont `git push --force`, only do it if you know exactly what is happening like you want to reset the remote head back to a few commits.
 
 ## Features
-- List avaliable commands by using `/help`
-- Be able to load and save basic library data from a .txt file through command `/load <filename>` and `/save <filename>` 
-- Can list avaliable data with `/list <datatype>` with `<datatype>` are .eg `books`, (more will comming soon)...
-- Clear screen using `/clear` and quit the program with `/quit`
     
 ## How to use
 **Pre-built binary:**
@@ -22,7 +18,7 @@ You can get the binary from [Release page]()(comming soon!)
 ```sh
 make run       # build (incremental) + run
 make build     # build only
-make fresh     # full clean rebuild (redownloads deps)
+make fresh     # full clean rebuild
 make clean     # just remove build/
 ```
 
@@ -34,19 +30,15 @@ Lib-Manager-Cpp/
 ├── database.txt            # Persistence data
 │
 ├── include/                # Public headers
-│   ├── api.hpp             # Translate the input from the TUI to specific method with the Library
 │   ├── book.hpp            
 │   ├── library.hpp          
 │   ├── student.hpp         
 │   ├── transaction.hpp     
-│   └── tui.hpp             # Terminal UI (FTXUI)
 │
 └── src/                    # Implementation
     ├── main.cpp
-    ├── api.cpp
     ├── book.cpp
     ├── library.cpp
     ├── student.cpp
     ├── transaction.cpp
-    └── tui.cpp
 ```
