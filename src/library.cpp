@@ -1,13 +1,19 @@
 #include "library.hpp"
+#define lib Library
 
-// provide default value to assure safety
-Library::Library(int id, string name)
+lib::Library(int id, string name)
 {
     this->name = name;
     this->id = id;
 }
 
-bool Library::loadFromFile(const std::string &filepath)
+InsertionStatus lib::addBook(const Book &book)
+    {
+        this->Books.insert_or_assign(book.getISBN(), book);
+        return InsertionStatus::Success;
+    }
+
+bool lib::loadFromFile(const std::string &filepath){
 {
     ifstream fi(filepath);
     if (!fi.is_open())
