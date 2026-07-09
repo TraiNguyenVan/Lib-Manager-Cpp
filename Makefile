@@ -7,7 +7,7 @@ run: build
 	./build/lib_manager
 
 fresh:
-	rm -rf build .deps-cache && cmake -S . -B build && cmake --build build
+	rm -rf build && cmake -S . -B build && cmake --build build
 
 clean:
 	rm -rf build
