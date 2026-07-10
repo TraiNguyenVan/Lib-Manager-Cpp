@@ -1,8 +1,4 @@
-#include "student.hpp"
+#include "../include/student.hpp"
 
-Student::Student(string id, string name, string phone)
-{
-    this->name = name;
-    this->id = id;
-    this->phone = phone;
-}
+Student::Student(string id, string name, string phone, int borrowedBooks, vector<string> borrowedBookISBNs)
+    : id(id), name(name), phone(phone), borrowedBooks(borrowedBooks), borrowedBookISBNs(borrowedBookISBNs) {}
