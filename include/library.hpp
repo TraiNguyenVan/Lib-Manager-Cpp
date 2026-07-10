@@ -32,11 +32,7 @@ class Library
 {
 public:
     Library(int id = 1, string name = "Lib");
-    InsertionStatus addBook(const Book &book)
-    {
-        this->Books.insert_or_assign(book.getISBN(), book);
-        return InsertionStatus::Success;
-    }
+    InsertionStatus addBook(const Book &book);
     CheckoutStatus checkOutBook(const std::string &id, const std::string &ISBN);
     bool returnBook(const std::string &id, const std::string &ISBN);
     std::vector<Book> searchBooks(std::string_view query) const;

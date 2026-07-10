@@ -1,4 +1,4 @@
-#include "library.hpp"
+#include "../include/library.hpp"
 #define lib Library
 
 lib::Library(int id, string name)
@@ -13,7 +13,7 @@ InsertionStatus lib::addBook(const Book &book)
         return InsertionStatus::Success;
     }
 
-bool lib::loadFromFile(const std::string &filepath){
+bool lib::loadFromFile(const std::string &filepath)
 {
     ifstream fi(filepath);
     if (!fi.is_open())
