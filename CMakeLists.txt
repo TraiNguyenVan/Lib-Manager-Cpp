@@ -6,5 +6,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 
-add_executable(lib_manager src/main.cpp src/book.cpp src/library.cpp src/student.cpp src/transaction.cpp src/date.cpp)
+add_executable(lib_manager main.cpp src/book.cpp src/library.cpp src/student.cpp src/transaction.cpp src/date.cpp)
 target_include_directories(lib_manager PRIVATE include)
