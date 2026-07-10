@@ -17,7 +17,7 @@ private:
 public:
     Date(int day, int month, int year);
     //Calculating how many days have passed since the end of term date
-    int daysSinceDeadline(Date endOfTermDate, Date returnDate);
+    int daysSinceDeadline(Date endOfTermDate);
 };
 
 #endif
