@@ -1,6 +1,9 @@
 #include "../include/library.hpp"
 #define lib Library
 
+#include <iostream>
+using namespace std;
+
 lib::Library(int id, string name)
 {
     this->name = name;
@@ -67,4 +70,42 @@ bool Library::saveToFile(const std::string &filepath)
         fo << records[i] << "\n";
     }
         return true;
+}
+
+bool Library::loadStudents(const std::string &filepath){
+    ifstream fi(filepath);
+    if (!fi.is_open()) return false;
+    int n;
+    if (!(fi >> n)) return false;
+    fi.ignore();
+    for(int i = 0; i < n; i++){
+        string Tclass;
+        getline(fi, Tclass); //fi.ignore();
+
+        int numStudents, borrowedBooks;
+        string name, Tid;
+        vector<string> id;
+
+        fi >> numStudents; fi.ignore();
+        for(int j = 0; j < numStudents; j++){
+            vector<string> ISBN;
+            getline(fi, name);
+            getline(fi, Tid);
+
+            id.push_back(Tid);
+
+            fi >> borrowedBooks; fi.ignore();
+            for(int k = 0; k < borrowedBooks; k++){
+                string temp;
+                getline(fi, temp);
+                ISBN.push_back(temp);
+                // Add the borrowed book ISBN to the student's record
+            }
+            IDList[Tid] = Student(Tid, name, "", borrowedBooks, ISBN);
+        }
+
+        ClassList[Tclass] = id;
+
+    }
+    return 1;
 }

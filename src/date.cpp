@@ -1,5 +1,6 @@
 #include "../include/date.hpp"
 
+
 Date::Date(int day, int month, int year)
 {
     this->day = day;
@@ -48,8 +49,8 @@ int Date::daysSinceDeadline(Date endOfTermDate)
 
 
         DayPasses += this->day;
-        returnDate.year = endOfTermDate.year;
-        returnDate.month = 12; returnDate.day = 31;
+        this->year = endOfTermDate.year;
+        this->month = 12; this->day = 31;
     }
     //Calculating when no year different
     if(endOfTermDate.month == this->month
