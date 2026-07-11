@@ -13,11 +13,12 @@ private:
     int year;
 
 
-    int monthDays[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+    int monthDays[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
     bool isLeapYear(int year);
     int CalculateLeapYears(int year1, int year2);
     int CalculateDays(Date date);
+    //Calculating by transforming the date into days (from 1950 to date calculating date)
 
 public:
     Date(int day, int month, int year);
