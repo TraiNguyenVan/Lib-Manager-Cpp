@@ -13,6 +13,7 @@ private:
     int year;
 
     bool isLeapYear(int year);
+    int CalculateLeapYears(int year1, int year2);
 
 public:
     Date(int day, int month, int year);

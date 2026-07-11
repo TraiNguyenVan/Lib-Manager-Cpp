@@ -13,6 +13,19 @@ bool Date::isLeapYear(int year)
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
+int Date::CalculateLeapYears(int year1, int year2)
+{
+    int leapYears = 0;
+    for (int year = year1; year <= year2; ++year)
+    {
+        if (isLeapYear(year))
+        {
+            leapYears++;
+        }
+    }
+    return leapYears;
+}
+
 int Date::daysSinceDeadline(Date endOfTermDate)
 {
 
@@ -28,46 +41,28 @@ int Date::daysSinceDeadline(Date endOfTermDate)
     int DayPasses = 0;
     int monthDays[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-    //Calculating part
-    //Calculating difference in years
-    if (endOfTermDate.year > this->year)
+    //Calculating by transforming the date into days (from 1950 to return date)
+    int days1 = (this->year - 1950) * 365 + this->day;
+    if(this->month > 2 && isLeapYear(this->year))
     {
-        if (endOfTermDate.year - this->year != 1){
-            for(int i = this->year + 1; i < endOfTermDate.year; i++)
-            {
-                DayPasses += isLeapYear(i)? 366 : 365;
-            }
-        }
-        for(int i = 1; i < this->month; i++)
-        {
-            DayPasses += monthDays[i];
-        }
-        if (isLeapYear(this->year) && this->month > 2)
-        {
-            DayPasses += 1;
-        }
+        days1++;
+    }
+    for(int i = 0; i < this->month - 1; i++)
+    {
+        days1 += monthDays[i];
+    }
+    days1 += CalculateLeapYears(1950, this->year - 1);
 
-
-        DayPasses += this->day;
-        this->year = endOfTermDate.year;
-        this->month = 12; this->day = 31;
-    }
-    //Calculating when no year different
-    if(endOfTermDate.month == this->month
-    && endOfTermDate.day == this->day)
+    //Now calculating from 1950 to end of term date)
+    int days2 = (endOfTermDate.year - 1950) * 365 + endOfTermDate.day;
+    if(endOfTermDate.month > 2 && isLeapYear(endOfTermDate.year))
     {
-        return DayPasses;
+        days2++;
     }
-    for(int i = endOfTermDate.month++; i < this->month--; i++)
+    for(int i = 0; i < endOfTermDate.month - 1; i++)
     {
-        DayPasses += monthDays[i - 1];
+        days2 += monthDays[i];
     }
-    if (isLeapYear(this->year)
-    && this->month > 2
-    && (endOfTermDate.month < 2 || (endOfTermDate.month == 2 && endOfTermDate.day < 29)))
-    {
-        DayPasses += 1;
-    }
-    DayPasses += this->day - endOfTermDate.day;
-    return DayPasses;
+    days2 += CalculateLeapYears(1950, endOfTermDate.year - 1);
+    return days1- days2;
 }   
