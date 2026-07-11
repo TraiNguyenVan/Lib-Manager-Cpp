@@ -33,8 +33,8 @@ Lib-Manager-Cpp/
 ├── .gitignore
 │
 ├── data/                   # data for the program to load from/save to
-│   ├── database.txt.example
-│   └── student-data.txt
+│   ├── books-data.txt.example
+│   └── student-data.txt.example
 │
 ├── include/                # Public headers
 │   ├── book.hpp
