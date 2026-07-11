@@ -12,8 +12,12 @@ private:
     int month;
     int year;
 
+
+    int monthDays[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
     bool isLeapYear(int year);
     int CalculateLeapYears(int year1, int year2);
+    int CalculateDays(Date date);
 
 public:
     Date(int day, int month, int year);
