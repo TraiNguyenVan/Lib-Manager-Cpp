@@ -82,8 +82,8 @@ bool Library::loadStudents(const std::string &filepath){
         string Tclass;
         getline(fi, Tclass); //fi.ignore();
 
-        int numStudents, borrowedBooks;
         string name, Tid;
+        int numStudents, borrowedBooks;
         vector<string> id;
 
         fi >> numStudents; fi.ignore();
@@ -101,7 +101,7 @@ bool Library::loadStudents(const std::string &filepath){
                 ISBN.push_back(temp);
                 // Add the borrowed book ISBN to the student's record
             }
-            IDList[Tid] = Student(Tid, name, "", borrowedBooks, ISBN);
+            IDList.insert_or_assign(Tid, Student(Tid, name, "", borrowedBooks, ISBN));
         }
 
         ClassList[Tclass] = id;
