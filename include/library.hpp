@@ -32,7 +32,7 @@ enum class InsertionStatus
 class Library
 {
 public:
-    Library(int id = 1, string name = "Lib");
+    Library(int id, string name);
     InsertionStatus addBook(const Book &book);
     CheckoutStatus checkOutBook(const std::string &id, const std::string &ISBN);
     bool returnBook(const std::string &id, const std::string &ISBN);
