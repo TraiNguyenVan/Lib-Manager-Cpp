@@ -32,24 +32,34 @@ enum class InsertionStatus
 class Library
 {
 public:
+    // constructor
     Library(int id, string name);
+
+    // Book's operations
     InsertionStatus addBook(const Book &book);
     CheckoutStatus checkOutBook(const std::string &id, const std::string &ISBN);
     bool returnBook(const std::string &id, const std::string &ISBN);
+
     std::vector<Book> searchBooks(std::string_view query) const;
-    bool loadFromFile(const std::string &filepath);
+
+    bool loadBooks(const std::string &filepath);
+    bool saveBooks(const std::string &filepath);
+
+    // Some ultilities for the saving process
     Book makeBookfromRecord(string ISBN, string title, string author, int available_copies);
     string makeRecord(Book &book);
     vector<string> makeRecords();
-    bool saveToFile(const std::string &filepath);
 
+    // Student's operations
     bool loadStudents(const std::string &filepath);
     bool saveStudents(const std::string &filepath);
 
 private:
     int id;
     string name;
+    // Books with ISBN code as their index
     unordered_map<string, Book> Books;
+
     vector<Transaction> transactions;
 
     //The IDList have format as ID:Student info while ClassList have format as NameClass:ID Student.

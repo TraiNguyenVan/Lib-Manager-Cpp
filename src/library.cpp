@@ -16,7 +16,7 @@ InsertionStatus lib::addBook(const Book &book)
         return InsertionStatus::Success;
     }
 
-bool lib::loadFromFile(const std::string &filepath)
+bool lib::loadBooks(const std::string &filepath)
 {
     ifstream fi(filepath);
     if (!fi.is_open())
@@ -62,7 +62,7 @@ vector<string> Library::makeRecords() {
     return records;
 }
 
-bool Library::saveToFile(const std::string &filepath)
+bool Library::saveBooks(const std::string &filepath)
 {
     ofstream fo(filepath);
     vector<string> records = makeRecords();
