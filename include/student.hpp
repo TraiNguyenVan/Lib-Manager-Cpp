@@ -15,11 +15,14 @@ private:
     string phone;
     int borrowedBooks;
     vector<string> borrowedBookISBNs;
+
     
 public:
     Student(string id, string name, string phone, 
         int borrowedBooks, vector<string> borrowedBookISBNs);                                                                                                                                                                                                                       
     
+    string getName() const {return name;}
+    string getID() const {return id;}
 };
 
 #endif

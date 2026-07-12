@@ -54,6 +54,9 @@ public:
     bool loadStudents(const std::string &filepath);
     bool saveStudents(const std::string &filepath);
 
+    //ClassList TEMPORARY stay here for easier debug.
+    map<string, vector<string>> ClassList;
+
 private:
     int id;
     string name;
@@ -64,6 +67,5 @@ private:
 
     //The IDList have format as ID:Student info while ClassList have format as NameClass:ID Student.
     map<string, Student> IDList;
-    map<string, vector<string>> ClassList;
 };
 #endif
