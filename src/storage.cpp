@@ -1,22 +1,6 @@
-#include "../include/library.hpp"
-#define lib Library
+#include <storage.hpp>
 
-#include <iostream>
-using namespace std;
-
-lib::Library(int id, string name)
-{
-    this->name = name;
-    this->id = id;
-}
-
-InsertionStatus lib::addBook(const Book &book)
-{
-    this->Books.insert_or_assign(book.getISBN(), book);
-    return InsertionStatus::Success;
-}
-
-bool lib::loadBooks(const std::string &filepath)
+bool  Storage::loadBooks(const std::string &filepath)
 {
     ifstream fi(filepath);
     if (!fi.is_open())
@@ -50,9 +34,9 @@ string Library::makeRecord(Book &book)
     return book.getISBN() + "\n" + book.getTitle() + "\n" + book.getAuthor() + "\n" + to_string(book.getAvailableCopies());
 }
 
+
 // this one simply makes mulitple records at once as a vector
-vector<string> Library::makeRecords()
-{
+vector<string> Library::makeRecords() {
     vector<string> records;
     for (auto it : Books)
     {
@@ -66,45 +50,36 @@ bool Library::saveBooks(const std::string &filepath)
 {
     ofstream fo(filepath);
     vector<string> records = makeRecords();
-    for (int i = 0; i < records.size(); ++i)
-    {
-        fo<< records[i] << "\n";
+    for (int i = 0; i < records.size(); ++i) {
+        fo << records[i] << "\n";
     }
-    return true;
+        return true;
 }
 
-bool Library::loadStudents(const std::string &filepath)
-{
+bool Library::loadStudents(const std::string &filepath){
     ifstream fi(filepath);
-    if (!fi.is_open())
-        return false;
+    if (!fi.is_open()) return false;
     int n;
-    if (!(fi >> n))
-        return false;
+    if (!(fi >> n)) return false;
     fi.ignore();
-    for (int i = 0; i < n; i++)
-    {
+    for(int i = 0; i < n; i++){
         string Tclass;
-        getline(fi, Tclass); // fi.ignore();
+        getline(fi, Tclass); //fi.ignore();
 
         string name, Tid;
         int numStudents, borrowedBooks;
         vector<string> id;
 
-        fi >> numStudents;
-        fi.ignore();
-        for (int j = 0; j < numStudents; j++)
-        {
+        fi >> numStudents; fi.ignore();
+        for(int j = 0; j < numStudents; j++){
             vector<string> ISBN;
             getline(fi, name);
             getline(fi, Tid);
 
             id.push_back(Tid);
 
-            fi >> borrowedBooks;
-            fi.ignore();
-            for (int k = 0; k < borrowedBooks; k++)
-            {
+            fi >> borrowedBooks; fi.ignore();
+            for(int k = 0; k < borrowedBooks; k++){
                 string temp;
                 getline(fi, temp);
                 ISBN.push_back(temp);
@@ -114,6 +89,7 @@ bool Library::loadStudents(const std::string &filepath)
         }
 
         ClassList[Tclass] = id;
+
     }
     return 1;
 }
