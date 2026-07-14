@@ -1,9 +1,9 @@
-## Table of content
-[1. Quick notes](#quick-notes)
-[2. Features](#features)
-[3. How to use](#how-to-use)
-[4. Project structure](#project-structure)
-[5. Code formatter](#code-formatter)
+## Table of contents
+[1. Quick notes](#quick-notes)  
+[2. Features](#features)  
+[3. How to use](#how-to-use)  
+[4. Project structure](#project-structure)  
+[5. Code formatter](#code-formatter)  
 [6. Development Guideline](#development-guideline-can-be-found-in-the-corespond-project-here-though-it-is-not-well-organized-please-create-issues-to-help-us-know-how-to-improve)
 
 
