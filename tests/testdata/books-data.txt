@@ -1,0 +1,41 @@
+10
+12345432345
+Game of Thrones
+Steve Jobs
+100
+9780307277671
+The Catcher in the Rye
+J.D. Salinger
+80
+9780451524935
+1984
+George Orwell
+75
+9780684830490
+The Old Man and the Sea
+Ernest Hemingway
+30
+9780061120084
+To Kill a Mockingbird
+Harper Lee
+60
+9780547928227
+The Hobbit
+J.R.R. Tolkien
+90
+9780140283334
+The Lord of the Rings
+J.R.R. Tolkien
+55
+9780743273565
+The Great Gatsby
+F. Scott Fitzgerald
+45
+9780439139601
+Harry Potter and the Sorcerer's Stone
+J.K. Rowling
+120
+9780156012195
+The Little Prince
+Antoine de Saint-Exupery
+40
