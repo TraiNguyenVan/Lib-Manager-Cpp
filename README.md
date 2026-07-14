@@ -1,10 +1,11 @@
 ## Table of content
-[1. Quick notes](#quick-notes)
+[1. Quick notes](#quick-notes)  
 [2. Features](#features)
-[3. How to use](#how-to-use)
-[4. Project structure](#project-structure)
-[5. Code formatter](#code-formatter)
-[6. Development Guideline](#development-guideline-can-be-found-in-the-corespond-project-here-though-it-is-not-well-organized-please-create-issues-to-help-us-know-how-to-improve)
+[3. How to use](#how-to-use)    
+[4. Testing](#testing)  
+[5. Project structure](#project-structure)  
+[6. Code formatter](#code-formatter)  
+[7. Development Guideline](#development-guideline-can-be-found-in-the-corespond-project-here-though-it-is-not-well-organized-please-create-issues-to-help-us-know-how-to-improve)
 
 
 ## Quick notes
@@ -16,6 +17,7 @@
 
 ## Features
 (not yet, the project currently under highly development)
+
 ## How to use
 **Pre-built binary:**
 ```sh
@@ -31,6 +33,16 @@ make build     # build only
 make fresh     # full clean rebuild
 make clean     # just remove build/
 ```
+## Testing
+
+```sh
+make test       # configure + build tests + run via ctest
+```
+
+Uses Google Test
+Test source files are in `tests/`. To add a new test, create a `test_*.cpp` file there and
+add it to `tests/CMakeLists.txt`.
+
 
 ## Project structure 
 ```
