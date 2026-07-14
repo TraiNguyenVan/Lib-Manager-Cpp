@@ -26,7 +26,7 @@ void StudentInputTest() {
 }
 
 int main() {
-    DateTest();
-    StudentInputTest();
+    // DateTest();
+    // StudentInputTest();
     return 0;
 }
