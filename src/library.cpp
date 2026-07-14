@@ -65,6 +65,7 @@ vector<string> Library::makeRecords() {
 bool Library::saveBooks(const std::string &filepath)
 {
     ofstream fo(filepath);
+    fo << Books.size() << "\n";
     vector<string> records = makeRecords();
     for (int i = 0; i < records.size(); ++i) {
         fo << records[i] << "\n";
