@@ -1,8 +1,6 @@
 #ifndef TRANSACTION_HPP
 #define TRANSACTION_HPP
 
-class Transaction
-{
-};
+class Transaction {};
 
 #endif
