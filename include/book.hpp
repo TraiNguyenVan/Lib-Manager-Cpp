@@ -5,16 +5,15 @@
 
 using namespace std;
 
-class Book
-{
-public:
+class Book {
+   public:
     Book(string ISBN, string title, string author, int total_copies);
     string getISBN() const;
     string getTitle() const;
     string getAuthor() const;
     int getAvailableCopies() const;
 
-private:
+   private:
     string ISBN;
     string title;
     string author;

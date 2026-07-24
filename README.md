@@ -1,3 +1,12 @@
+## Table of contents
+[1. Quick notes](#quick-notes)  
+[2. Features](#features)  
+[3. How to use](#how-to-use)  
+[4. Project structure](#project-structure)  
+[5. Code formatter](#code-formatter)  
+[6. Development Guideline](#development-guideline-can-be-found-in-the-corespond-project-here-though-it-is-not-well-organized-please-create-issues-to-help-us-know-how-to-improve)
+
+
 ## Quick notes
 - Hello you shouldnt vibe code this thing yea? you can ask AI but, be resonsible foryour code 🥀
 - Well this thing still super new and definitely not well organized yet, so we are accepting any changes to improve this project
@@ -31,7 +40,7 @@ Lib-Manager-Cpp/
 ├── main.cpp                # Entry point
 ├── lib plan.txt            # Planning notes
 ├── .gitignore
-│
+├── .clang-format
 ├── data/                   # data for the program to load from/save to
 │   ├── books-data.txt.example
 │   └── student-data.txt.example
@@ -50,4 +59,38 @@ Lib-Manager-Cpp/
     ├── student.cpp
     └── transaction.cpp
 ```
-## Development Guideline can be found in the corespond project [here](https://github.com/users/TraiNguyenVan/projects/2/views/2) (though it is not well organized, please create issues to help us know how to improve)
+## Code formatter
+### This project will use clang-format as its default code formatter which you **have** to adopt to produce consistent code. The formatter can be installed by the following methods(proably more methods but your job is just to make it work so i dont bother what method do you use that much):
+
+### If your are using Visual Studio Code family editor, you may need to install and use this extension below:
+
+**Installation**
+
+```https://marketplace.visualstudio.com/items?itemName=xaver.clang-format``` **or** type ctrl + p and put this: ```ext install xaver.clang-**format```
+
+**Usage**
+1. First set your default formatter to clang-format by: ```Right click on you C++ code > Format Documment With > Configure Default Formatter > Clang-format```
+2. Format your code by pressing ```Ctrl + Shift + I```
+
+### If you are not using Visual Studio Code, and lets say you are using linux in general, you must install the following package and run the format command to activate the formatter on your code:
+
+**Installation**
+
+Linux:
+- Ubuntu/Debian: ```sudo apt install clang-format```
+- Fedora/RHEL: ```sudo dnf install clang-format```
+
+MacOS:
+- ```brew install clang-format```
+Windows:
+- i am genuiely dont know:), [PR](https://github.com/TraiNguyenVan/Lib-Manager-Cpp/pulls) to add the instruction for Windows, push straight if you are project's contributor
+
+**Usage**
+
+Run the following command to format your code:
+
+```clang-format -i <filename>```
+
+### For more info about this section check [this issue](https://github.com/TraiNguyenVan/Lib-Manager-Cpp/issues/22)
+---
+#### Development Guideline can be found in the corespond project [here](https://github.com/users/TraiNguyenVan/projects/2/views/2) (though it is not well organized, please create issues to help us know how to improve)
