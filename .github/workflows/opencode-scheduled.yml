@@ -1,8 +1,8 @@
 name: Scheduled OpenCode Task
 
 on:
-  schedule:
-    - cron: "0 0 * * 1" # Every Monday at 12am UTC (7am GMT+7 Vietnam)
+  # schedule:
+  #   - cron: "0 0 * * 1" # Every Monday at 12am UTC (7am GMT+7 Vietnam)
 
 jobs:
   opencode:
