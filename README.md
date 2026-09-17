@@ -66,7 +66,7 @@ Lib-Manager-Cpp/
 
 **Installation**
 
-```https://marketplace.visualstudio.com/items?itemName=xaver.clang-format``` **or** type ctrl + p and put this: ```ext install xaver.clang-**format```
+```https://marketplace.visualstudio.com/items?itemName=xaver.clang-format``` **or** type ctrl + shift + p and put this: ```ext install xaver.clang-**format```
 
 **Usage**
 1. First set your default formatter to clang-format by: ```Right click on you C++ code > Format Documment With > Configure Default Formatter > Clang-format```
@@ -82,6 +82,7 @@ Linux:
 
 MacOS:
 - ```brew install clang-format```
+
 Windows:
 - i am genuiely dont know:), [PR](https://github.com/TraiNguyenVan/Lib-Manager-Cpp/pulls) to add the instruction for Windows, push straight if you are project's contributor
 
