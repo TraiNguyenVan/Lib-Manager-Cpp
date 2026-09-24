@@ -12,6 +12,7 @@ jobs:
       contents: write
       pull-requests: write
       issues: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -22,8 +23,21 @@ jobs:
         uses: anomalyco/opencode/github@latest
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          GH_TOKEN: ${{ secrets.PROJECTS_PAT }}
         with:
           model: opencode/big-pickle
           prompt: |
-            Review the codebase for any TODO comments and create a summary.
-            If you find issues worth addressing, open an issue to track them.
+            Run this command to list items currently in "Todo" status on the project board:
+            gh project item-list 2 --owner TraiNguyenVan --query "status:Todo" --format json
+
+            Also run this to see items "In Progress":
+            gh project item-list 2 --owner TraiNguyenVan --query "status:\"In Progress\"" --format json
+
+            For each item found, note its title, issue/PR number, and type (Issue or PullRequest).
+            Write a short summary grouped by status: what's in Todo, what's In Progress.
+
+            Only if an item in Todo looks stale, vague, or missing details needed to act on it,
+            open a new GitHub issue describing what clarification or follow-up is needed,
+            and reference the original item's number in the body.
+
+            Do not open a new issue for every item — only for ones that genuinely need attention.
