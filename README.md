@@ -60,6 +60,9 @@ Lib-Manager-Cpp/
     ├── student.cpp
     └── transaction.cpp
 ```
+The checked-in student file is a fictional example. Use invented names and
+IDs in any public samples or tests.
+
 ## Code formatter
 ### This project will use clang-format as its default code formatter which you **have** to adopt to produce consistent code. The formatter can be installed by the following methods(proably more methods but your job is just to make it work so i dont bother what method do you use that much):
 

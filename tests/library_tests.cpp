@@ -4,7 +4,9 @@
 #include <cstdio>
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <string>
+#include <vector>
 
 namespace {
 
@@ -90,14 +92,25 @@ void checkDuplicateImport() {
     std::remove(path);
 }
 
+void checkStudentFixture(const std::string &samplePath) {
+    Library lib(1, "Test");
+    check(lib.loadStudents(samplePath), "load the synthetic student example");
+    const std::map<std::string, std::vector<std::string>> expected{
+        {"DEMO-A", {"DEMO001", "DEMO002"}},
+        {"DEMO-B", {"DEMO003"}},
+    };
+    check(lib.ClassList == expected, "preserve each synthetic class and its student IDs");
+}
+
 }  // namespace
 
 int main(int argc, char *argv[]) {
-    if (argc != 2) return 2;
+    if (argc != 3) return 2;
     checkBookRoundTrip(argv[1]);
     checkEmptyCatalog();
     checkWriteFailure();
     checkDuplicateISBN();
     checkDuplicateImport();
+    checkStudentFixture(argv[2]);
     return failures == 0 ? 0 : 1;
 }

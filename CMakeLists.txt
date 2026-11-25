@@ -20,6 +20,7 @@ include(CTest)
 if(BUILD_TESTING)
     add_executable(library_tests tests/library_tests.cpp)
     target_link_libraries(library_tests PRIVATE lib_manager_core)
-    add_test(NAME book_persistence
-             COMMAND library_tests "${CMAKE_CURRENT_SOURCE_DIR}/data/books-data.txt.example")
+    add_test(NAME library_regressions
+             COMMAND library_tests "${CMAKE_CURRENT_SOURCE_DIR}/data/books-data.txt.example"
+                                   "${CMAKE_CURRENT_SOURCE_DIR}/data/student-data.txt.example")
 endif()
