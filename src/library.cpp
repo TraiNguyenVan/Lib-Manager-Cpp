@@ -10,8 +10,8 @@ lib::Library(int id, string name) {
 }
 
 InsertionStatus lib::addBook(const Book &book) {
-    this->Books.insert_or_assign(book.getISBN(), book);
-    return InsertionStatus::Success;
+    const bool inserted = Books.emplace(book.getISBN(), book).second;
+    return inserted ? InsertionStatus::Success : InsertionStatus::DuplicateISBN;
 }
 
 bool lib::loadBooks(const std::string &filepath) {
@@ -19,9 +19,11 @@ bool lib::loadBooks(const std::string &filepath) {
     if (!fi.is_open()) return false;
 
     int n;
-    if (!(fi >> n)) return false;
+    if (!(fi >> n) || n < 0) return false;
     fi.ignore();
 
+    // Parse into a temporary catalog so a rejected file leaves Books unchanged.
+    unordered_map<string, Book> imported;
     for (int i = 0; i < n; i++) {
         string ISBN, title, author;
         int available_copies;
@@ -29,10 +31,14 @@ bool lib::loadBooks(const std::string &filepath) {
             !(fi >> available_copies))
             return false;
         fi.ignore();
-        addBook(makeBookfromRecord(ISBN, title, author, available_copies));
+        if (Books.find(ISBN) != Books.end()) return false;
+        const bool inserted =
+            imported.emplace(ISBN, makeBookfromRecord(ISBN, title, author, available_copies)).second;
+        if (!inserted) return false;
     }
+    Books.merge(imported);
     return true;
-};
+}
 
 Book Library::makeBookfromRecord(string ISBN, string title, string author, int available_copies) {
     return Book(ISBN, title, author, available_copies);

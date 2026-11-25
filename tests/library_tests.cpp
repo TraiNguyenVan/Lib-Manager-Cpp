@@ -55,6 +55,41 @@ void checkWriteFailure() {
     std::remove(file);
 }
 
+void checkDuplicateISBN() {
+    Library lib(1, "Test");
+    const Book original("100", "Original", "Author", 2);
+    const Book duplicate("100", "Replacement", "Another author", 9);
+    check(lib.addBook(original) == InsertionStatus::Success, "add the original ISBN");
+    check(lib.addBook(duplicate) == InsertionStatus::DuplicateISBN, "reject a repeated ISBN");
+    const auto records = lib.makeRecords();
+    check(records.size() == 1 && records[0] == lib.makeRecord(original),
+          "keep the original on duplicate insertion");
+}
+
+void checkDuplicateImport() {
+    const char *path = "catalog-duplicate.test.txt";
+    {
+        std::ofstream file(path);
+        file << "2\n101\nNew title\nAuthor\n1\n100\nDuplicate title\nAuthor\n1\n";
+    }
+    Library lib(1, "Test");
+    const Book original("100", "Original", "Author", 2);
+    lib.addBook(original);
+    check(!lib.loadBooks(path), "reject a file containing an already cataloged ISBN");
+    const auto records = lib.makeRecords();
+    check(records.size() == 1 && records[0] == lib.makeRecord(original),
+          "a rejected import does not replace or partially add books");
+
+    {
+        std::ofstream file(path);
+        file << "2\n101\nFirst title\nAuthor\n1\n101\nSecond title\nAuthor\n1\n";
+    }
+    Library empty(2, "Empty");
+    check(!empty.loadBooks(path), "reject a repeated ISBN within the same file");
+    check(empty.makeRecords().empty(), "do not partially load a duplicate ISBN file");
+    std::remove(path);
+}
+
 }  // namespace
 
 int main(int argc, char *argv[]) {
@@ -62,5 +97,7 @@ int main(int argc, char *argv[]) {
     checkBookRoundTrip(argv[1]);
     checkEmptyCatalog();
     checkWriteFailure();
+    checkDuplicateISBN();
+    checkDuplicateImport();
     return failures == 0 ? 0 : 1;
 }
