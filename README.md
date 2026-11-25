@@ -1,10 +1,11 @@
 ## Table of contents
-[1. Quick notes](#quick-notes)  
-[2. Features](#features)  
-[3. How to use](#how-to-use)  
-[4. Project structure](#project-structure)  
-[5. Code formatter](#code-formatter)  
-[6. Development Guideline](#development-guideline-can-be-found-in-the-corespond-project-here-though-it-is-not-well-organized-please-create-issues-to-help-us-know-how-to-improve)
+1. [Quick notes](#quick-notes)
+2. [Features](#features)
+3. [How to use](#how-to-use)
+4. [Continuous integration (CI)](#continuous-integration-ci)
+5. [Project structure](#project-structure)
+6. [Code formatter](#code-formatter)
+7. [Development Guideline](#development-guideline-can-be-found-in-the-corespond-project-here-though-it-is-not-well-organized-please-create-issues-to-help-us-know-how-to-improve)
 
 
 ## Quick notes
@@ -32,6 +33,13 @@ make test      # run the CTest checks (no third-party test dependency)
 make fresh     # full clean rebuild
 make clean     # just remove build/
 ```
+
+## Continuous integration (CI)
+
+GitHub Actions runs `make test` on pull requests targeting `main` and on
+pushes to `main`. This builds the C++ app and runs the same regression tests
+you can run locally. On a pull request, open **Checks** to see test failures
+and their output.
 
 ## Project structure 
 ```
