@@ -28,6 +28,7 @@ make sure you have cmake, gcc with c++ 17 supported installed, recommend to run 
 ```sh
 make run       # build (incremental) + run
 make build     # build only
+make test      # run the CTest checks (no third-party test dependency)
 make fresh     # full clean rebuild
 make clean     # just remove build/
 ```

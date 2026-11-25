@@ -41,7 +41,7 @@ class Library {
 
     // Some ultilities for the saving process
     Book makeBookfromRecord(string ISBN, string title, string author, int available_copies);
-    string makeRecord(Book &book);
+    string makeRecord(const Book &book);
     vector<string> makeRecords();
 
     // Student's operations
