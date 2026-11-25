@@ -10,8 +10,8 @@ lib::Library(int id, string name) {
 }
 
 InsertionStatus lib::addBook(const Book &book) {
-    this->Books.insert_or_assign(book.getISBN(), book);
-    return InsertionStatus::Success;
+    const bool inserted = Books.emplace(book.getISBN(), book).second;
+    return inserted ? InsertionStatus::Success : InsertionStatus::DuplicateISBN;
 }
 
 bool lib::loadBooks(const std::string &filepath) {
@@ -19,9 +19,11 @@ bool lib::loadBooks(const std::string &filepath) {
     if (!fi.is_open()) return false;
 
     int n;
-    if (!(fi >> n)) return false;
+    if (!(fi >> n) || n < 0) return false;
     fi.ignore();
 
+    // Parse into a temporary catalog so a rejected file leaves Books unchanged.
+    unordered_map<string, Book> imported;
     for (int i = 0; i < n; i++) {
         string ISBN, title, author;
         int available_copies;
@@ -29,17 +31,21 @@ bool lib::loadBooks(const std::string &filepath) {
             !(fi >> available_copies))
             return false;
         fi.ignore();
-        addBook(makeBookfromRecord(ISBN, title, author, available_copies));
+        if (Books.find(ISBN) != Books.end()) return false;
+        const bool inserted =
+            imported.emplace(ISBN, makeBookfromRecord(ISBN, title, author, available_copies)).second;
+        if (!inserted) return false;
     }
+    Books.merge(imported);
     return true;
-};
+}
 
 Book Library::makeBookfromRecord(string ISBN, string title, string author, int available_copies) {
     return Book(ISBN, title, author, available_copies);
 }
 
 // this one makes one record means one book
-string Library::makeRecord(Book &book) {
+string Library::makeRecord(const Book &book) {
     return book.getISBN() + "\n" + book.getTitle() + "\n" + book.getAuthor() + "\n" +
            to_string(book.getAvailableCopies());
 }
@@ -55,12 +61,18 @@ vector<string> Library::makeRecords() {
 }
 
 bool Library::saveBooks(const std::string &filepath) {
-    ofstream fo(filepath);
-    vector<string> records = makeRecords();
-    for (int i = 0; i < records.size(); ++i) {
-        fo << records[i] << "\n";
+    ofstream file(filepath);
+    if (!file) return false;
+
+    // The loader reads this count before the four fields of each book.
+    file << Books.size() << '\n';
+    for (const auto &entry : Books) {
+        file << makeRecord(entry.second) << '\n';
     }
-    return true;
+
+    // Closing flushes buffered writes. Check the result before reporting success.
+    file.close();
+    return static_cast<bool>(file);
 }
 
 bool Library::loadStudents(const std::string &filepath) {
